@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                              }, 1000);
                 }
                 else{
-                    ((Button)view).setBackgroundColor(Color.parseColor("#228B22"));
+                    ((Button)view).setBackgroundColor(Color.RED);
                     Toast.makeText(MainActivity.this,"Incorrect",Toast.LENGTH_SHORT).show();
                     new Handler().postDelayed(new Runnable() {
                         @Override
