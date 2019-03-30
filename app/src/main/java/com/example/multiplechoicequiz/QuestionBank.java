@@ -11,7 +11,8 @@ public class QuestionBank {
             "7.The concept of extended BNF in the parsing grammar was earliest introduced by?",
     "8.In Merge Sorting we use the concept of ________  as recursion and backtracking.",
     "9.The Greedy Approach Algorithm is based on _________ productives ensures best optimal solution.",
-    "10.Which is the most predominant search engine available as open source project?"
+    "10.Which is the most predominant search engine available as an open source project?",
+            "11.Which class of algorthms are used for encryption of public key access to private key in accessing the database?"
     };
     private String mChoices[][]={
             {"Germany","France","Poland","Russia"},
@@ -23,11 +24,12 @@ public class QuestionBank {
             {"Niklaus Wirth","James Gosling","Allen Newel","Beckus Naur"},
             {"Greedy Approach","Divide and Conquer","Knapsack Optimization","Parse Trees"},
             {"Space Optimality","Time Optimality","Profit Maximization","Both 1 and 3"},
-            {"GitHub","Google","Facebook","DuckDuckGo"}
+            {"GitHub","Google","Facebook","DuckDuckGo"},
+            {"Greedy Algorithms","Divide and Conquer","NP Hard","Simple Polynomials"}
     };
     private String mCorrectAnswers[]={
             "Poland",
-            "60","JavaScript","Dual","Lex","Call by Reference","Niklaus Wirth","Divide and Conquer","Both 1 and 3","DuckDuckGo"
+            "60","JavaScript","Dual","Lex","Call by Reference","Niklaus Wirth","Divide and Conquer","Both 1 and 3","DuckDuckGo","NP Hard"
     };
     //Public Getter methods
     public String getQuestion(int index){
@@ -44,6 +46,9 @@ public class QuestionBank {
     }
     public String getChoice4(int index){
         return mChoices[index][3];
+    }
+    public int getmQuestionLength(){
+        return mQuestionS.length;
     }
     public String getCorrectAnswer(int index){
         return mCorrectAnswers[index];

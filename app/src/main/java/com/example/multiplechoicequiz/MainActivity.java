@@ -1,5 +1,6 @@
 package com.example.multiplechoicequiz;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
@@ -35,125 +36,261 @@ public class MainActivity extends AppCompatActivity {
         mButtonChoice2 = (Button) findViewById(R.id.choice2);
         mButtonChoice3 = (Button) findViewById(R.id.choice3);
         mButtonChoice4 = (Button) findViewById(R.id.choice4);
+
         updateQuestion();
        //Button Listener Event for button logic goes here
+
         mButtonChoice1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if (mButtonChoice1.getText() == mAnswer) {
-                    mScore++;
-                    updateScore(mScore);
-                    if(view instanceof Button) {
-                        ((Button)mButtonChoice1).setBackgroundColor(Color.parseColor("#228B22"));
-                    }
-                    Toast.makeText(MainActivity.this,"Correct",Toast.LENGTH_SHORT).show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            updateQuestion(); //call function!
+                if(mQuestionNumber<11) {
+                    if (mButtonChoice1.getText() == mAnswer) {
+                        mScore++;
+                        updateScore(mScore);
+                        if (view instanceof Button) {
+                            ((Button) mButtonChoice1).setBackgroundColor(Color.parseColor("#228B22"));
+                        }
 
-                        }
-                        }, 1000);
+                        Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                updateQuestion(); //call function!
+
+                            }
+                        }, 800);
+                    } else {
+                        ((Button) mButtonChoice1).setBackgroundColor(Color.RED);
+                        Toast.makeText(MainActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                updateQuestion(); //call function!
+                            }
+                        }, 800);
+                    }
                 }
-                else{
-                    ((Button)mButtonChoice1).setBackgroundColor(Color.RED);
-                    Toast.makeText(MainActivity.this,"Incorrect",Toast.LENGTH_SHORT).show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            updateQuestion(); //call function!
-                        }
-                        }, 1000);
+
+                   else{
+                       if(mButtonChoice1.getText()==mAnswer){
+                           mScore++;
+                           ((Button)mButtonChoice1).setBackgroundColor(Color.parseColor("#228B22"));
+                           Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                       new Handler().postDelayed(new Runnable() {
+                           @Override
+                           public void run() {
+                               Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                               String answer = Integer.toString(mScore);
+                               intent.putExtra("Final_Score_Value",answer);
+                               startActivity(intent); //call function!
+
+                           }
+                       }, 10);}
+                       else{((Button)mButtonChoice1).setBackgroundColor(Color.parseColor("#ff0000"));
+                           Toast.makeText(MainActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                           new Handler().postDelayed(new Runnable() {
+                               @Override
+                               public void run() {
+                                   Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                                   String answer = Integer.toString(mScore);
+                                   intent.putExtra("Final_Score_Value",answer);
+                                   startActivity(intent); //call function!
+                               }
+                           }, 10);
+
+                       }
+
+                   }
                 }
-            }
-        }
-        );
+            });
         mButtonChoice2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if (mButtonChoice2.getText() == mAnswer) {
-                    mScore++;
-                    updateScore(mScore);
-                    if(view instanceof Button) {
-                        ((Button)mButtonChoice2).setBackgroundColor(Color.parseColor("#228B22"));
+                if(mQuestionNumber<11) {
+                    if (mButtonChoice2.getText() == mAnswer) {
+                        mScore++;
+                        updateScore(mScore);
+                        if (view instanceof Button) {
+                            ((Button) mButtonChoice2).setBackgroundColor(Color.parseColor("#228B22"));
+                        }
+
+                        Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                updateQuestion(); //call function!
+
+                            }
+                        }, 800);
+                    } else {
+                        ((Button) mButtonChoice2).setBackgroundColor(Color.RED);
+                        Toast.makeText(MainActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                updateQuestion(); //call function!
+                            }
+                        }, 800);
                     }
-                    Toast.makeText(MainActivity.this,"Correct",Toast.LENGTH_SHORT).show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            updateQuestion(); //call function!
-                        }
-                        }, 1000);
                 }
-                else{
-                    ((Button)mButtonChoice2).setBackgroundColor(Color.RED);
-                    Toast.makeText(MainActivity.this,"Incorrect",Toast.LENGTH_SHORT).show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            updateQuestion(); //call function!
-                        }
-                        }, 1000);
+
+                else {
+                    if (mButtonChoice2.getText() == mAnswer) {
+                        mScore++;
+                        ((Button)mButtonChoice2).setBackgroundColor(Color.parseColor("#228B22"));
+                        Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                                String answer = Integer.toString(mScore);
+                                intent.putExtra("Final_Score_Value",answer);
+                                startActivity(intent); //call function!
+
+                            }
+                        }, 10);
+
+                    }
+                    else{
+                        ((Button)mButtonChoice2).setBackgroundColor(Color.parseColor("#ff0000"));
+                        Toast.makeText(MainActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                                String answer = Integer.toString(mScore);
+                                intent.putExtra("Final_Score_Value",answer);
+                                startActivity(intent); //call function!
+                            }
+                        }, 10);
+                    }
                 }
             }
-        }
-        );
+        });
         mButtonChoice3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if (mButtonChoice3.getText() == mAnswer) {
-                    mScore++;
-                    updateScore(mScore);
-                    if(view instanceof Button) {
-                        ((Button)view).setBackgroundColor(Color.parseColor("#228B22"));
+                if(mQuestionNumber<11) {
+                    if (mButtonChoice3.getText() == mAnswer) {
+                        mScore++;
+                        updateScore(mScore);
+                        if (view instanceof Button) {
+                            ((Button) mButtonChoice3).setBackgroundColor(Color.parseColor("#228B22"));
+                        }
+
+                        Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                updateQuestion(); //call function!
+
+                            }
+                        }, 800);
+                    } else {
+                        ((Button) mButtonChoice3).setBackgroundColor(Color.RED);
+                        Toast.makeText(MainActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                updateQuestion(); //call function!
+                            }
+                        }, 800);
                     }
-                    Toast.makeText(MainActivity.this,"Correct",Toast.LENGTH_SHORT).show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            updateQuestion(); //call function!
-                        }
-                        }, 1000);
                 }
-                else{
-                    ((Button)view).setBackgroundColor(Color.RED);
-                    Toast.makeText(MainActivity.this,"Incorrect",Toast.LENGTH_SHORT).show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            updateQuestion(); //call function!
-                        }
-                        }, 1000);
+
+                else {
+                    if (mButtonChoice3.getText() == mAnswer) {
+                        mScore++;
+                        ((Button)mButtonChoice3).setBackgroundColor(Color.parseColor("#228B22"));
+                        Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                                String answer = Integer.toString(mScore);
+                                intent.putExtra("Final_Score_Value",answer);
+                                startActivity(intent); //call function!
+
+                            }
+                        }, 10);
+
+                    }
+                    else{
+                        ((Button)mButtonChoice3).setBackgroundColor(Color.parseColor("#ff0000"));
+                        Toast.makeText(MainActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                                String answer = Integer.toString(mScore);
+                                intent.putExtra("Final_Score_Value",answer);
+                                startActivity(intent); //call function!
+                            }
+                        }, 10);
+                    }
                 }
             }
-        }
-        );
+        });
         mButtonChoice4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if (mButtonChoice4.getText() == mAnswer) {
-                    mScore++;
-                    updateScore(mScore);
-                    if(view instanceof Button) {
-                        ((Button)view).setBackgroundColor(Color.parseColor("#228B22"));
-                    }
-                    Toast.makeText(MainActivity.this,"Correct",Toast.LENGTH_SHORT).show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            updateQuestion(); //call function!
-                             }
-                             }, 1000);
-                }
-                else{
-                    ((Button)view).setBackgroundColor(Color.RED);
-                    Toast.makeText(MainActivity.this,"Incorrect",Toast.LENGTH_SHORT).show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            updateQuestion(); //call function!
+                if(mQuestionNumber<11) {
+                    if (mButtonChoice4.getText() == mAnswer) {
+                        mScore++;
+                        updateScore(mScore);
+                        if (view instanceof Button) {
+                            ((Button) mButtonChoice4).setBackgroundColor(Color.parseColor("#228B22"));
                         }
-                        }, 1000);
+
+                        Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                updateQuestion(); //call function!
+
+                            }
+                        }, 800);
+                    } else {
+                        ((Button) mButtonChoice4).setBackgroundColor(Color.RED);
+                        Toast.makeText(MainActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                updateQuestion(); //call function!
+                            }
+                        }, 800);
+                    }
+                }
+
+                else {
+                    if (mButtonChoice4.getText() == mAnswer) {
+                        mScore++;
+                        ((Button)mButtonChoice4).setBackgroundColor(Color.parseColor("#228B22"));
+                        Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                                String answer = Integer.toString(mScore);
+                                intent.putExtra("Final_Score_Value",answer);
+                                startActivity(intent); //call function!
+
+                            }
+                        }, 10);
+
+                    }
+                    else{
+                        ((Button)mButtonChoice3).setBackgroundColor(Color.parseColor("#ff0000"));
+                        Toast.makeText(MainActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                                String answer = Integer.toString(mScore);
+                                intent.putExtra("Final_Score_Value",answer);
+                                startActivity(intent); //call function!
+                            }
+                        }, 10);
+                    }
                 }
             }
-        }
-        );
+        });
     }
     private void updateQuestion(){
         mQuestionView.setText(mQuestionBank.getQuestion(mQuestionNumber));
